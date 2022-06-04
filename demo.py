@@ -40,7 +40,7 @@ def process_data(df):
 			dx = North[i + 1] - North[i - 1]
 			dy = East[i + 1] - East[i - 1]
 			ds = np.sqrt(dx**2 + dy**2)
-			dt = df['time'][i + 1] - df['time'][i - 1]
+			dt = df['timestamp'][i + 1] - df['timestamp'][i - 1]
 			heading = df['heading'][i]#np.arctan2(dy,dx)
 			velocity  = df['velocity'][i]#ds / dt
 			#rate = heading / dt
@@ -70,15 +70,15 @@ def show_data(arg):
 	axis[0, 0].set_title("Player Path")
 	  
 	# For Cosine Function
-	axis[0, 1].plot(df_gps['time'], df_gps['smoothed_velocity'])
+	axis[0, 1].plot(df_gps['timestamp'], df_gps['smoothed_velocity'])
 	axis[0, 1].set_title("Velocity vs Time")
 	  
 	# For Tangent Function
-	axis[1, 0].plot(df_gps['time'], df_gps['smoothed_heading'])
+	axis[1, 0].plot(df_gps['timestamp'], df_gps['smoothed_heading'])
 	axis[1, 0].set_title("Heading vs Time")
 	  
 	# For Tanh Function
-	axis[1, 1].plot(df_gps['time'], df_gps['altitude'])
+	axis[1, 1].plot(df_gps['timestamp'], df_gps['barometer_altitude'])
 	axis[1, 1].set_title("Test Numbers")
 	  
 	# Combine all the operations and display
